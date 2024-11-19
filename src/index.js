@@ -1,15 +1,15 @@
-const express = require("express");
-const morgan = require("morgan");
-const path = require("path");
-const app = express();
-const port = 3000;
-app.set("view engine", "ejs");
-app.use(morgan("combined"));
-app.set("views", path.join(__dirname, "resources/views"));
-app.use(express.static(path.join(__dirname, "resources/public")));
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './index.css';
+import App from './App';
+import reportWebVitals from './reportWebVitals';
 
-app.get("/", (req, res) => res.render("home"));
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render( <
+    App / >
+);
 
-app.listen(port, () => {
-  console.log(`http://localhost:${port}`);
-});
+// If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+reportWebVitals();
