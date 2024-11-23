@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import { Button } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 import TripTable from "./TripTable";
 import TripModal from "./TripModal";
+import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const AdminPage = () => {
@@ -18,6 +19,8 @@ const AdminPage = () => {
   });
 
   const apiBaseUrl = "https://ltdd-flutter-sever.onrender.com/api/trips";
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchTrips = async () => {
@@ -61,7 +64,6 @@ const AdminPage = () => {
       !formData.price ||
       !formData.avatar
     ) {
-      console.error("Please fill in all fields");
       return;
     }
 
@@ -98,6 +100,13 @@ const AdminPage = () => {
   return (
     <div className="container mt-5">
       <h1 className="text-center mb-4">Manage Trips</h1>
+      <Button
+        variant="secondary"
+        onClick={() => navigate("/admin/users")}
+        className="mb-3"
+      >
+        Go to User Management
+      </Button>
       <Button
         variant="primary"
         onClick={() => handleShowModal()}
